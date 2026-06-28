@@ -27,12 +27,31 @@ Sensor Measurements
 
 Training datasets used in this phase:
 
-## train_FD001.txt
-## train_FD002.txt
-## train_FD003.txt
-## train_FD004.txt
+train_FD001.txt
+train_FD002.txt
+train_FD003.txt
+train_FD004.txt
 
 Note: This repository currently focuses only on the training dataset analysis. Test dataset analysis will be added in the next phase.
+
+
+## Data Extraction and Preparation
+
+The NASA C-MAPSS training dataset is provided as raw space-separated text files. Before performing SQL-based exploratory analysis, the training data was extracted and prepared using Python.
+
+The data preparation workflow consisted of:
+
+1. Downloading the NASA C-MAPSS training dataset.
+2. Reading the raw training files (`train_FD001`, `train_FD002`, `train_FD003`, and `train_FD004`) using Python.
+3. Assigning meaningful column names to the engine ID, operational cycle, operating settings, and 21 sensor measurements.
+4. Adding a `dataset_id` column to identify the source dataset (FD001–FD004).
+5. Combining all four training datasets into a single consolidated dataset.
+6. Connecting to a MySQL database using SQLAlchemy.
+7. Importing the processed training data into a MySQL table for SQL-based exploratory analysis.
+8. Verifying successful data loading before performing analytical queries.
+
+> **Note:** The Python data extraction utility is not included in this repository because it contains local database configuration and database credentials. This repository focuses on the SQL-based exploratory analysis performed on the prepared training dataset.
+
 
 
 
