@@ -12,20 +12,28 @@ The objective of this phase is to perform SQL-based exploratory analysis to unco
 - Sensor degradation trends
 - Failure progression patterns
 
-
 ## Dataset
 
-Dataset:
-NASA C-MAPSS Turbofan Engine Degradation Simulation Dataset
+## Dataset: NASA C-MAPSS Turbofan Engine Degradation Simulation Dataset
 
 The dataset contains simulated aircraft engine sensor measurements collected during multiple operating cycles until failure.
 
 Each engine record includes:
 
-- Engine ID
-- Operational Cycle
-- Operating Conditions
-- Sensor Measurements
+Engine ID
+Operational Cycle
+Operating Conditions
+Sensor Measurements
+
+Training datasets used in this phase:
+
+## train_FD001.txt
+## train_FD002.txt
+## train_FD003.txt
+## train_FD004.txt
+
+Note: This repository currently focuses only on the training dataset analysis. Test dataset analysis will be added in the next phase.
+
 
 
 ## SQL Analysis Performed
