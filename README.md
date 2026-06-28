@@ -28,8 +28,11 @@ Sensor Measurements
 Training datasets used in this phase:
 
 train_FD001.txt
+
 train_FD002.txt
+
 train_FD003.txt
+
 train_FD004.txt
 
 Note: This repository currently focuses only on the training dataset analysis. Test dataset analysis will be added in the next phase.
