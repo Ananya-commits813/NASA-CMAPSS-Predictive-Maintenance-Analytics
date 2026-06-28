@@ -1,7 +1,5 @@
 # NASA-CMAPSS-Predictive-Maintenance-Analytics
 
-# NASA C-MAPSS Predictive Maintenance Analytics
-
 ## Project Overview
 
 This project focuses on analysing the NASA C-MAPSS (Commercial Modular Aero-Propulsion System Simulation) dataset to understand aircraft engine degradation behaviour and reliability patterns.
