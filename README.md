@@ -117,25 +117,32 @@ Analysis includes:
 
 ## Project Workflow
 
+## Project Workflow
+
+```text
 NASA C-MAPSS Engine Data
           |
           ↓
 1. Data Understanding
           |
           ↓
-2. Data Analysis & Pattern Discovery (SQL + Python)
+2. Data Analysis & Pattern Discovery
+   (SQL + Python)
           |
           ↓
 3. Feature Engineering & Feature Selection
           |
           ↓
-4. Remaining Useful Life (RUL) Prediction Model
+4. Remaining Useful Life (RUL)
+   Prediction Model
           |
           ↓
-5. Predictive Maintenance Decision System
+5. Predictive Maintenance
+   Decision System
           |
           ↓
 6. Dashboard / Deployment
+```
 
 
 ## Future Work
