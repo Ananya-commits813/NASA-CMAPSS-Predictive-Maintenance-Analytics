@@ -1,189 +1,253 @@
 # NASA-CMAPSS-Predictive-Maintenance-Analytics
 
-## Project Overview
-
-This project focuses on analysing the NASA C-MAPSS (Commercial Modular Aero-Propulsion System Simulation) dataset to understand aircraft engine degradation behaviour and reliability patterns.
-
-The objective of this phase is to perform SQL-based exploratory analysis to uncover important insights related to:
-
-- Engine operational lifespan
-- Fleet reliability
-- Lifecycle behaviour
-- Sensor degradation trends
-- Failure progression patterns
-
-## Dataset
-
-## Dataset: NASA C-MAPSS Turbofan Engine Degradation Simulation Dataset
-
-The dataset contains simulated aircraft engine sensor measurements collected during multiple operating cycles until failure.
-
-Each engine record includes:
-
-Engine ID
-Operational Cycle
-Operating Conditions
-Sensor Measurements
-
-Training datasets used in this phase:
-
-train_FD001.txt
-
-train_FD002.txt
-
-train_FD003.txt
-
-train_FD004.txt
-
-Note: This repository currently focuses only on the training dataset analysis. Test dataset analysis will be added in the next phase.
+A comprehensive SQL analytics project using the NASA C-MAPSS Turbofan Engine Degradation Simulation dataset to analyze aircraft engine degradation, fleet performance, Remaining Useful Life (RUL), and engine health intelligence for predictive maintenance.
 
 
-## Data Extraction and Preparation
+---
 
-The NASA C-MAPSS training dataset is provided as raw space-separated text files. Before performing SQL-based exploratory analysis, the training data was extracted and prepared using Python.
+# 📖 Project Overview
 
-The data preparation workflow consisted of:
+Predictive maintenance enables organizations to detect equipment degradation before failure, reducing unplanned downtime and improving operational reliability.
 
-1. Downloading the NASA C-MAPSS training dataset.
-2. Reading the raw training files (`train_FD001`, `train_FD002`, `train_FD003`, and `train_FD004`) using Python.
-3. Assigning meaningful column names to the engine ID, operational cycle, operating settings, and 21 sensor measurements.
-4. Adding a `dataset_id` column to identify the source dataset (FD001–FD004).
-5. Combining all four training datasets into a single consolidated dataset.
-6. Connecting to a MySQL database using SQLAlchemy.
-7. Importing the processed training data into a MySQL table for SQL-based exploratory analysis.
-8. Verifying successful data loading before performing analytical queries.
+This project demonstrates how SQL can be used to transform raw engine telemetry into actionable maintenance insights. Using the NASA C-MAPSS dataset, the analysis covers fleet exploration, engine lifecycle analysis, sensor degradation, Remaining Useful Life (RUL), and engine health assessment across four operating scenarios.
 
-> **Note:** The Python data extraction utility is not included in this repository because it contains local database configuration and database credentials. This repository focuses on the SQL-based exploratory analysis performed on the prepared training dataset.
+---
+
+
+# 🎯 Project Objectives
+
+The project aims to:
+
+- Analyze engine lifecycle and degradation behavior
+- Evaluate fleet reliability and operational performance
+- Identify critical degradation sensors
+- Analyze Remaining Useful Life (RUL)
+- Assess engine health across multiple datasets
+- Prioritize maintenance using engine health intelligence
+- Generate business-ready insights using SQL
+
+---
 
 
 
+# 📂 Dataset
 
-## SQL Analysis Performed
+**Dataset:** NASA C-MAPSS Turbofan Engine Degradation Simulation Dataset
 
+The dataset contains simulated aircraft engine sensor measurements collected over multiple operating cycles until engine failure.
 
-### 1. Fleet Overview Analysis
+### Features
 
-Objective:
-Understand overall fleet characteristics and engine distribution.
+- Engine ID
+- Operational Cycle
+- 3 Operating Settings
+- 21 Sensor Measurements
 
-Analysis includes:
+### Datasets Used
 
-- Total number of engines
-- Total operating cycles
-- Average engine lifespan
-- Engine performance summary
+- FD001
+- FD002
+- FD003
+- FD004
 
-
-### 2. Engine Lifespan Analysis
-
-Objective:
-Study how long engines operate before failure.
-
-Insights:
-
-- Minimum lifespan
-- Maximum lifespan
-- Average lifespan
-- Lifespan distribution across engines
+---
 
 
-### 3. Reliability Analysis
+# ⚙️ Data Preparation
 
-Objective:
-Evaluate fleet reliability and degradation behaviour.
+The raw NASA C-MAPSS text files were preprocessed using Python before importing them into MySQL.
 
-Analysis includes:
+The preparation workflow included:
 
-- Survival patterns
-- Failure frequency
-- Reliability trends over operating cycles
+1. Reading the raw datasets.
+2. Assigning meaningful column names.
+3. Adding a `dataset_id` column.
+4. Combining all datasets.
+5. Importing the processed data into MySQL.
+6. Validating successful data loading.
 
+> **Note:** Python preprocessing scripts are not included because they contain local database configuration details. This repository focuses on the SQL analytics performed on the prepared dataset.
 
-### 4. Lifecycle Segmentation
-
-Objective:
-Divide engine lifecycle into different degradation stages.
-
-Stages analysed:
-
-- Early life
-- Useful life
-- Degradation phase
-- Failure phase
+---
 
 
-### 5. Sensor Trend Analysis
-
-Objective:
-Identify sensors that capture degradation behaviour.
-
-Analysis includes:
-
-- Sensor value changes over cycles
-- Degradation patterns
-- Sensor importance evaluation
-
-
-### 6. Failure Signature Analysis
-
-Objective:
-Understand the patterns observed before engine failure.
-
-Analysis includes:
-
-- Final operating cycles
-- Sensor behaviour before failure
-- Failure progression patterns
-
-
-## Tools Used
-
-- SQL
-- PostgreSQL / MySQL
-- NASA C-MAPSS Dataset
-
-
-## Project Workflow
-
-## Project Workflow
+# 🔄 Project Workflow
 
 ```text
-NASA C-MAPSS Engine Data
-          |
-          ↓
-1. Data Understanding
-          |
-          ↓
-2. Data Analysis & Pattern Discovery
-   (SQL + Python)
-          |
-          ↓
-3. Feature Engineering & Feature Selection
-          |
-          ↓
-4. Remaining Useful Life (RUL)
-   Prediction Model
-          |
-          ↓
-5. Predictive Maintenance
-   Decision System
-          |
-          ↓
-6. Dashboard / Deployment
+NASA C-MAPSS Raw Data
+        │
+        ▼
+Python Data Preparation
+        │
+        ▼
+MySQL Database
+        │
+        ▼
+Fleet Exploration
+        │
+        ▼
+Train Dataset Analysis
+        │
+        ▼
+Test Dataset Analysis
+        │
+        ▼
+Remaining Useful Life (RUL) Analysis
+        │
+        ▼
+Engine Health Intelligence
+        │
+        ▼
+Business Insights
 ```
 
+---
 
-## Future Work
+# 📁 Repository Structure
 
-Upcoming phases will include:
+```text
+NASA-CMAPSS-Predictive-Maintenance-SQL-Analytics
 
-- Test dataset analysis
-- Feature engineering
-- Machine learning models
-- Remaining Useful Life prediction
-- Predictive maintenance dashboard
+│
+├── Train
+│   ├── Fleet_Overview_Analysis.sql
+│   ├── Engine_Lifespan_Analysis.sql
+│   ├── Engine_Reliability_Analysis.sql
+│   ├── Lifecycle_Segmentation_Analysis.sql
+│   ├── Sensor_Trend_Analysis.sql
+│   └── Failure_Signature_Analysis.sql
+│
+├── Test
+│   ├── Current_Engine_Health_Analysis.sql
+│   ├── Sensor_Trend_Analysis.sql
+│   └── Failure_Signature_Analysis.sql
+│
+├── RUL
+│   └── RUL_Data_Fleet_Analysis.sql
+│
+├── Combined_Test_and_RUL
+│   └── Combined_Test_and_RUL_Data_Analysis.sql
+│
+└── README.md
+```
 
+---
 
-## Author
+# 📊 SQL Analysis Performed
 
-Ananya Roy
+## Fleet Exploration
+
+- Fleet overview
+- Engine distribution
+- Operating cycle statistics
+
+## Train Dataset Analysis
+
+- Engine lifespan analysis
+- Fleet reliability analysis
+- Lifecycle segmentation
+- Sensor trend analysis
+- Failure signature analysis
+
+## Test Dataset Analysis
+
+- Current engine health
+- Sensor degradation analysis
+- Failure signature analysis
+
+## Remaining Useful Life (RUL) Analysis
+
+- RUL distribution
+- Dataset comparison
+- Risk categorization
+- Fleet statistics
+- Engine prioritization
+
+## Test + RUL Engine Health Intelligence
+
+- Engine health assessment
+- Fleet health scoring
+- Maintenance prioritization
+- Engine ranking
+- Correlation analysis
+
+---
+
+# 💡 Key Findings
+
+- Most engines operated for more than **200 cycles** before failure.
+- Engine durability varied across all four NASA C-MAPSS datasets.
+- **Sensor S9** consistently emerged as the strongest degradation indicator.
+- **Sensors S3, S4, S7, S12, and S14** were the most informative degradation sensors.
+- Remaining Useful Life (RUL) enabled identification of critical, high-risk, and healthy engines.
+- Integrating Test telemetry with RUL enabled comprehensive engine health assessment and maintenance prioritization.
+
+---
+
+# 🛠 SQL Concepts Used
+
+- SELECT
+- WHERE
+- GROUP BY
+- ORDER BY
+- HAVING
+- CASE WHEN
+- INNER JOIN
+- LEFT JOIN
+- Common Table Expressions (CTEs)
+- Window Functions
+- ROW_NUMBER()
+- RANK()
+- DENSE_RANK()
+- LAG()
+- LEAD()
+- NTILE()
+- PERCENT_RANK()
+- Aggregate Functions
+
+---
+
+# 💻 Technologies Used
+
+- SQL (MySQL)
+- Python
+- Pandas
+- SQLAlchemy
+- Git
+- GitHub
+
+---
+
+# 📈 Business Value
+
+This project demonstrates how SQL analytics supports:
+
+- Predictive Maintenance
+- Fleet Health Monitoring
+- Engine Risk Assessment
+- Maintenance Prioritization
+- Early Failure Detection
+- Resource Optimization
+- Reliability Engineering
+- Data-Driven Decision Making
+
+---
+
+# 🚀 Future Roadmap
+
+This SQL analytics project serves as the foundation for future work, including:
+
+- AI-powered Natural Language-to-SQL Assistant
+- LLM-based analytics and automated business insights
+- Interactive Streamlit dashboard
+- Predictive maintenance recommendation system
+
+---
+
+# 👩‍💻 Author
+
+**Ananya Roy**
+
+Data Analytics | SQL | AI & Machine Learning
+
+If you found this project useful, consider ⭐ starring the repository.
