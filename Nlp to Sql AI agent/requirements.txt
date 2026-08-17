@@ -1,9 +1,0 @@
-streamlit
-pandas
-mysql-connector-python
-sqlalchemy
-langchain
-langchain-community
-google-genai
-plotly
-python-dotenv
