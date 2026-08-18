@@ -4,7 +4,6 @@ from schema import *
 import google.genai as genai
 import os
 from dotenv import load_dotenv
-from google.api_core import exceptions
 from prompts import SQL_GENERATION_PROMPT
 import streamlit as st
 
