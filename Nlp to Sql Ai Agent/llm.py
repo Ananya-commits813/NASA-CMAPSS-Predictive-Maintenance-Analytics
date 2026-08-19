@@ -41,26 +41,10 @@ def generate_sql_from_question(natural_language_query,selected_table):
         return sql_query
 
     
-    except exceptions.ResourceExhausted:
-        st.error("❌ Gemini API rate limit exceeded.")
-        return None
-
-    except exceptions.InvalidArgument as e:
-       st.error(f"❌ Invalid Gemini request: {e}")
-       return None
-
-    except exceptions.DeadlineExceeded:
-       st.error("❌ Gemini request timed out.")
-       return None
-
-    except exceptions.Unauthenticated:
-      st.error("❌ Gemini API key is invalid or missing.")
-      return None
-
+    
     except Exception as e:
-      st.error(f"❌ Gemini/LLM error: {e}")
-      return None
 
+        return f"AI insight generation failed: {e}"
 def generate_ai_insight(prompt):
 
     try:
