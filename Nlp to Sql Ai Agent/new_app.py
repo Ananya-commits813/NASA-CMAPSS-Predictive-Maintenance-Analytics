@@ -1,6 +1,4 @@
-# =========================================================
 # IMPORTS
-# =========================================================
 
 import streamlit as st
 import pandas as pd
@@ -16,9 +14,7 @@ from sql_validator import clean_sql_query, validate_sql_query
 
 
 
-# =========================================================
 # PAGE CONFIGURATION
-# =========================================================
 
 st.set_page_config(
     page_title="NASA C-MAPPS AI SQL Agent",
@@ -28,9 +24,7 @@ st.set_page_config(
 )
 
 
-# =========================================================
 # SESSION STATE
-# =========================================================
 
 if "df" not in st.session_state:
     st.session_state.df = None
@@ -48,26 +42,24 @@ if "ai_insight" not in st.session_state:
     st.session_state.ai_insight = None
 
 
-# =========================================================
 # CUSTOM CSS
-# =========================================================
 
 st.markdown(
     """
     <style>
 
-    /* ------------------------------
+    /* 
        MAIN BACKGROUND
-    ------------------------------ */
+    */
 
     .stApp {
         background: #0f172a;
     }
 
 
-    /* ------------------------------
+    /* 
        MAIN TITLE
-    ------------------------------ */
+    */
 
     .main-title {
 
@@ -94,9 +86,9 @@ st.markdown(
     }
 
 
-    /* ------------------------------
+    /* 
        BUTTONS
-    ------------------------------ */
+    */
 
     .stButton > button {
 
@@ -106,9 +98,9 @@ st.markdown(
     }
 
 
-    /* ------------------------------
+    /* 
        METRIC CARDS
-    ------------------------------ */
+     */
 
     [data-testid="stMetric"] {
 
@@ -122,9 +114,9 @@ st.markdown(
     }
 
 
-    /* ------------------------------
+    /* 
        SIDEBAR
-    ------------------------------ */
+     */
 
     section[data-testid="stSidebar"] {
 
@@ -132,9 +124,9 @@ st.markdown(
     }
 
 
-    /* ------------------------------
+    /* 
        DATAFRAME
-    ------------------------------ */
+   */
 
     [data-testid="stDataFrame"] {
 
@@ -169,10 +161,9 @@ st.markdown(
 )
 
 
-# =========================================================
 # FUNCTION 1
 # BAR CHART
-# =========================================================
+
 
 def create_bar_chart(df):
 
@@ -196,9 +187,7 @@ def create_bar_chart(df):
         return
 
 
-    # ------------------------------
     # X AND Y SELECTION
-    # ------------------------------
 
     col1, col2 = st.columns(2)
 
@@ -230,9 +219,7 @@ def create_bar_chart(df):
         )
 
 
-    # ------------------------------
     # CREATE CHART
-    # ------------------------------
 
     fig = px.bar(
         df,
@@ -253,10 +240,8 @@ def create_bar_chart(df):
     )
 
 
-# =========================================================
 # FUNCTION 2
 # LINE CHART
-# =========================================================
 
 def create_line_chart(df):
 
@@ -278,9 +263,7 @@ def create_line_chart(df):
         return
 
 
-    # ------------------------------
     # X AND Y SELECTION
-    # ------------------------------
 
     col1, col2 = st.columns(2)
 
@@ -312,9 +295,7 @@ def create_line_chart(df):
         )
 
 
-    # ------------------------------
     # CREATE CHART
-    # ------------------------------
 
     fig = px.line(
         df,
@@ -336,10 +317,8 @@ def create_line_chart(df):
     )
 
 
-# =========================================================
 # FUNCTION 3
 # SCATTER PLOT
-# =========================================================
 
 def create_scatter_plot(df):
 
@@ -360,9 +339,7 @@ def create_scatter_plot(df):
         return
 
 
-    # ------------------------------
     # X AND Y SELECTION
-    # ------------------------------
 
     col1, col2 = st.columns(2)
 
@@ -385,9 +362,7 @@ def create_scatter_plot(df):
         )
 
 
-    # ------------------------------
     # CREATE CHART
-    # ------------------------------
 
     fig = px.scatter(
         df,
@@ -408,10 +383,8 @@ def create_scatter_plot(df):
     )
 
 
-# =========================================================
 # FUNCTION 4
 # PIE CHART
-# =========================================================
 
 def create_pie_chart(df):
 
@@ -434,9 +407,7 @@ def create_pie_chart(df):
         return
 
 
-    # ------------------------------
     # CATEGORY AND VALUE
-    # ------------------------------
 
     col1, col2 = st.columns(2)
 
@@ -468,9 +439,7 @@ def create_pie_chart(df):
         )
 
 
-    # ------------------------------
     # CREATE PIE
-    # ------------------------------
 
     fig = px.pie(
         df,
@@ -491,10 +460,8 @@ def create_pie_chart(df):
     )
 
 
-# =========================================================
 # FUNCTION 5
 # DISPLAY QUERY RESULTS
-# =========================================================
 
 def display_query_results(
     df,
@@ -545,9 +512,8 @@ def display_query_results(
         )
 
 
-    # =====================================================
+    
     # GENERATED SQL
-    # =====================================================
 
     st.markdown("### 🧬 Generated SQL")
 
@@ -558,9 +524,7 @@ def display_query_results(
     )
 
 
-    # =====================================================
     # QUERY RESULTS
-    # =====================================================
 
     st.markdown("### 📋 Query Results")
 
@@ -572,9 +536,7 @@ def display_query_results(
     )
 
 
-    # =====================================================
     # DOWNLOAD
-    # =====================================================
 
     csv_data = df.to_csv(
         index=False
@@ -589,9 +551,7 @@ def display_query_results(
     )
 
 
-    # =====================================================
     # VISUALIZATION SELECTOR
-    # =====================================================
 
     st.markdown("### 📈 Visualization")
 
@@ -612,60 +572,46 @@ def display_query_results(
     )
 
 
-    # =====================================================
     # TABLE
-    # =====================================================
 
 
 
 
-    # =====================================================
     # BAR
-    # =====================================================
 
     if visualization == "Bar Chart":
 
         create_bar_chart(df)
 
 
-    # =====================================================
     # LINE
-    # =====================================================
 
     elif visualization == "Line Chart":
 
         create_line_chart(df)
 
 
-    # =====================================================
     # SCATTER
-    # =====================================================
 
     elif visualization == "Scatter Plot":
 
         create_scatter_plot(df)
 
 
-    # =====================================================
     # PIE
-    # =====================================================
 
     elif visualization == "Pie Chart":
 
         create_pie_chart(df)
 
 
-# =========================================================
 # FUNCTION 6
 # HOME PAGE
-# =========================================================
 
 def show_home_page(selected_table):
 
 
-    # =====================================================
     # HEADER
-    # =====================================================
 
     st.markdown(
         """
@@ -682,9 +628,7 @@ def show_home_page(selected_table):
     )
 
 
-    # =====================================================
     # QUESTION
-    # =====================================================
 
     st.markdown(
         "### 💬 Ask a question from C-MAPPS dataset"
@@ -701,9 +645,7 @@ def show_home_page(selected_table):
     )
 
 
-    # =====================================================
     # GET ANSWER BUTTON
-    # =====================================================
 
     get_answer = st.button(
         "✨ Get Answer",
@@ -711,16 +653,12 @@ def show_home_page(selected_table):
     )
 
 
-    # =====================================================
     # EXECUTION
-    # =====================================================
 
     if get_answer:
 
 
-        # -----------------------------
         # CHECK QUESTION
-        # -----------------------------
 
         if not question:
 
@@ -731,16 +669,12 @@ def show_home_page(selected_table):
             return
 
 
-        # -----------------------------
         # START TIMER
-        # -----------------------------
 
         start_time = time.time()
 
 
-        # -----------------------------
         # GENERATE SQL
-        # -----------------------------
 
         with st.spinner(
             "🤖 Generating SQL..."
@@ -756,9 +690,7 @@ def show_home_page(selected_table):
             st.code(sql_query)
 
 
-        # -----------------------------
         # CHECK SQL
-        # -----------------------------
 
         if sql_query is None:
 
@@ -769,18 +701,14 @@ def show_home_page(selected_table):
             return
 
 
-        # -----------------------------
         # CLEAN SQL
-        # -----------------------------
 
         sql_query = clean_sql_query(
             sql_query
         )
 
 
-        # -----------------------------
         # VALIDATE SQL
-        # -----------------------------
 
         is_valid = validate_sql_query(
             sql_query,
@@ -797,9 +725,7 @@ def show_home_page(selected_table):
             return
 
 
-        # -----------------------------
         # DATABASE CONNECTION
-        # -----------------------------
 
         database_connection = None
         cursor = None
@@ -823,27 +749,21 @@ def show_home_page(selected_table):
                 )
 
 
-                # -------------------------
                 # EXECUTE SQL
-                # -------------------------
 
                 cursor.execute(
                     sql_query
                 )
 
 
-                # -------------------------
                 # EXECUTION TIME
-                # -------------------------
 
                 execution_time = (
                     time.time() - start_time
                 )
 
 
-                # -------------------------
                 # CHECK RESULT
-                # -------------------------
 
                 if cursor.with_rows:
 
@@ -856,9 +776,7 @@ def show_home_page(selected_table):
                     )
 
 
-                    # -------------------------
                     # CREATE DATAFRAME
-                    # -------------------------
 
                     df = pd.DataFrame(
                         result,
@@ -866,9 +784,7 @@ def show_home_page(selected_table):
                     )
 
 
-                    # -------------------------
                     # SAVE TO SESSION STATE
-                    # -------------------------
 
                     st.session_state.df = df
 
@@ -907,9 +823,7 @@ def show_home_page(selected_table):
                 database_connection.close()
 
 
-    # =====================================================
     # DISPLAY PREVIOUS QUERY RESULT
-    # =====================================================
 
     if st.session_state.df is not None:
 
@@ -925,10 +839,8 @@ def show_home_page(selected_table):
         )
 
 
-# =========================================================
 # FUNCTION 7
 # FLEET OVERVIEW
-# =========================================================
 def show_fleet_overview():
 
     st.title("📊 Fleet Overview")
@@ -974,10 +886,8 @@ def show_fleet_overview():
         )
 
 
-# =========================================================
 # FUNCTION 8
 # ENGINE ANALYSIS
-# =========================================================
 
 def show_engine_analysis():
 
@@ -1024,10 +934,8 @@ def show_engine_analysis():
     )
 
 
-# =========================================================
 # FUNCTION 9
 # SENSOR TRENDS
-# =========================================================
 
 def show_sensor_trends():
 
@@ -1086,14 +994,9 @@ def show_sensor_trends():
     )
 
 
-# =========================================================
 # FUNCTION 10
 # AI INSIGHTS
-# =========================================================
-# =========================================================
-# FUNCTION
-# AI INSIGHTS
-# =========================================================
+
 
 def show_ai_insights():
 
@@ -1116,9 +1019,7 @@ def show_ai_insights():
 
         return
 
-    # =====================================================
     # GET DATA FROM HOME PAGE
-    # =====================================================
 
     df = st.session_state.df
 
@@ -1126,17 +1027,13 @@ def show_ai_insights():
 
     sql_query = st.session_state.sql_query
 
-    # =====================================================
     # SHOW USER QUESTION
-    # =====================================================
 
     st.markdown("### 💬 Question Asked")
 
     st.info(question)
 
-    # =====================================================
     # SHOW QUERY RESULT
-    # =====================================================
 
     st.markdown("### 📊 Query Result")
 
@@ -1146,9 +1043,7 @@ def show_ai_insights():
         hide_index=True
     )
 
-    # =====================================================
     # SHOW GENERATED SQL
-    # =====================================================
 
     with st.expander("🔍 View Generated SQL"):
 
@@ -1157,9 +1052,7 @@ def show_ai_insights():
             language="sql"
         )
 
-    # =====================================================
     # GENERATE AI RECOMMENDATION
-    # =====================================================
 
     if st.button(
         "🧠 Generate AI Recommendation",
@@ -1216,17 +1109,13 @@ does not appear in the query results.
 Keep the explanation clear and practical.
 """
 
-                # -----------------------------------------
                 # CALL LLM
-                # -----------------------------------------
 
                 response = generate_ai_insight(
                     prompt
                 )
 
-                # -----------------------------------------
                 # SAVE AI RESPONSE
-                # -----------------------------------------
 
                 st.session_state.ai_insight = response
 
@@ -1236,9 +1125,7 @@ Keep the explanation clear and practical.
                     f"❌ Could not generate AI insight: {e}"
                 )
 
-    # =====================================================
     # DISPLAY AI RESPONSE
-    # =====================================================
 
     if st.session_state.ai_insight is not None:
 
@@ -1250,10 +1137,8 @@ Keep the explanation clear and practical.
             st.session_state.ai_insight
         )
 
-# =========================================================
 # FUNCTION 11
 # ABOUT DATASET
-# =========================================================
 
 def show_about_dataset():
 
@@ -1294,9 +1179,7 @@ def show_about_dataset():
     )
 
 
-# =========================================================
 # SIDEBAR
-# =========================================================
 
 with st.sidebar:
 
@@ -1346,9 +1229,7 @@ with st.sidebar:
 
 
 
-    # =====================================================
     # TABLE SELECTION
-    # =====================================================
 
     st.markdown(
         "### 🗄 SELECT TABLE"
@@ -1389,9 +1270,7 @@ with st.sidebar:
     )
 
 
-# =========================================================
 # PAGE ROUTING
-# =========================================================
 
 if page == "🏠 Home":
 
@@ -1423,9 +1302,7 @@ elif page == "ℹ️ About Dataset":
     show_about_dataset()
 
 
-# =========================================================
 # FOOTER
-# =========================================================
 
 st.markdown("---")
 
