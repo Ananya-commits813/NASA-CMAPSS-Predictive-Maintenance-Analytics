@@ -32,13 +32,13 @@ def generate_sql_from_question(natural_language_query,selected_table):
                 "role": "user",
                 "content": prompt
             }
-        ],
-        temperature=0
-        )
-        # Extract generated SQL
-        sql_query = response.choices[0].message.content.strip()
+       ],
+       temperature=0
+       )
+       # Extract generated SQL
+       sql_query = response.choices[0].message.content.strip()
 
-        return sql_query
+       return sql_query
 
     
     
