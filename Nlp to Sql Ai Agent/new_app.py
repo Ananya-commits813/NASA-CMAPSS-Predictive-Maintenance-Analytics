@@ -6,6 +6,7 @@ import time
 import plotly.express as px
 
 from llm import *
+from prompts import AI_INSIGHT_PROMPT
 from database import *
 from schema import *
 from test_query import *
@@ -1075,37 +1076,11 @@ def show_ai_insights():
                 # CREATE AI PROMPT
                 # -----------------------------------------
 
-                prompt = f"""
-You are an AI predictive maintenance analyst
-working with the NASA C-MAPPS turbofan engine
-dataset.
-
-The user asked:
-
-{question}
-
-The SQL query used was:
-
-{sql_query}
-
-The database returned these results:
-
-{result_text}
-
-Analyze ONLY the information provided above.
-
-Provide the following:
-
-1. Key Finding
-2. Engine Health Interpretation
-3. Risk Level
-4. Maintenance Recommendation
-
-Do not invent values or information that
-does not appear in the query results.
-
-Keep the explanation clear and practical.
-"""
+                prompt = AI_INSIGHT_PROMPT.format(
+    question=question,
+    sql_query=sql_query,
+    result_text=result_text
+)
 
                 # CALL LLM
 
