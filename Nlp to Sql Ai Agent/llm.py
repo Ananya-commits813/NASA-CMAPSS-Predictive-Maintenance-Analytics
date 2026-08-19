@@ -2,6 +2,7 @@ import mysql.connector
 from database import *
 from schema import *
 import google.genai as genai
+from groq import Groq
 import os
 from dotenv import load_dotenv
 from google.api_core import exceptions
