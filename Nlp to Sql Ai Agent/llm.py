@@ -73,7 +73,9 @@ def generate_ai_insight(prompt):
 
     except Exception as e:
 
-        return f"AI insight generation failed: {e}"
+       st.error(f"❌ Groq AI Insight Error: {e}")
+
+       return None
 
 if __name__ == "__main__":
 
