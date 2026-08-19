@@ -5,6 +5,7 @@ import google.genai as genai
 import os
 from dotenv import load_dotenv
 from prompts import SQL_GENERATION_PROMPT
+from google.api_core import exceptions
 import streamlit as st
 
 
