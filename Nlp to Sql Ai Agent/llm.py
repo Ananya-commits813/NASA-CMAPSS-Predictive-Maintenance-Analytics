@@ -49,34 +49,26 @@ def generate_ai_insight(prompt):
 
     try:
 
-        api_key = st.secrets["Api_key"]
+        # Get Groq API key
+        api_key = st.secrets["GROQ_API_KEY"]
 
-        client = genai.Client(
-            api_key=api_key
+        # Create Groq client
+        client = Groq(api_key=api_key)
+
+        # Generate AI insight
+        response = client.chat.completions.create(
+            model="openai/gpt-oss-20b",
+            messages=[
+                {
+                    "role": "user",
+                    "content": prompt
+                }
+            ],
+            temperature=0
         )
 
-        response = client.models.generate_content(
-            model="gemini-2.5-flash",
-            contents=prompt
-        )
+        return response.choices[0].message.content.strip()
 
-        return response.text.strip()
-
-    except exceptions.ResourceExhausted:
-
-        return "AI service rate limit exceeded. Please try again later."
-
-    except exceptions.InvalidArgument:
-
-        return "Invalid request sent to Gemini."
-
-    except exceptions.DeadlineExceeded:
-
-        return "Gemini request timed out."
-
-    except exceptions.Unauthenticated:
-
-        return "Invalid or missing Gemini API key."
 
     except Exception as e:
 
