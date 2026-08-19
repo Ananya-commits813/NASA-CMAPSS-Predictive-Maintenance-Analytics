@@ -51,7 +51,7 @@ def generate_ai_insight(prompt):
     try:
 
         # Get Groq API key
-        api_key = st.secrets["GROQ_API_KEY"]
+        api_key = st.secrets["Api_key"]
 
         # Create Groq client
         client = Groq(api_key=api_key)
