@@ -1357,7 +1357,8 @@ with st.sidebar:
         [
             "engine_train_telemetry",
             "engine_test_telemetry",
-            "engine_rul"
+            "engine_rul",
+            "engine_test_rul"
         ],
         label_visibility="collapsed"
     )
