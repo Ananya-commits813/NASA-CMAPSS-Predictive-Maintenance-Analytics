@@ -686,9 +686,7 @@ def show_home_page(selected_table):
                     selected_table
                 )
             )
-            st.write("Generated SQL:")
-            st.code(sql_query)
-
+            
 
         # CHECK SQL
 
